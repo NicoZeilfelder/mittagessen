@@ -1,0 +1,39 @@
+<div class="login-wrapper">
+  <h1>Mittagessen</h1>
+  <div class="form-wrapper" [formGroup]="form">
+    <div class="id-wrapper" *ngIf="loginState === LoginState.LOGIN">
+      <label for="id">Kennung:</label>
+      <input id="id" type="text" formControlName="id"/>
+    </div>
+
+    <div *ngIf="loginState === LoginState.SIGNUP">
+      <div class="name-wrapper">
+        <label for="name">Name:</label>
+        <input id="name" type="text" formControlName="name"/>
+      </div>
+      <div class="email-wrapper">
+        <label for="email">Email:</label>
+        <input id="email" type="text" formControlName="email"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="error-wrapper" *ngIf="this.form.invalid && this.form.touched">
+    <span>Bitte füllen Sie alle Felder aus!</span>
+  </div>
+
+  <div class="successful-registration" *ngIf="">
+
+  </div>
+
+  <div class="buttons-wrapper">
+    <div class="login-buttons" *ngIf="loginState === LoginState.LOGIN">
+      <button type="button" (click)="this.loginState = LoginState.SIGNUP">Kennung beantragen</button>
+      <button type="button" (click)="onLogin()">Anmelden</button>
+    </div>
+    <div class="signup-buttons" *ngIf="loginState === LoginState.SIGNUP">
+      <button type="button" (click)="this.loginState = LoginState.LOGIN">Zurück</button>
+      <button type="button" (click)="onSignUp()">Registrieren</button>
+    </div>
+  </div>
+</div>
