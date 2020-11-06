@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriptions.push(this.loginService.getUser().subscribe(users => {
       this.users = users;
-      console.log(this.users);
     }));
   }
 

@@ -1,0 +1,7 @@
+<div class="header-wrapper">
+  <span>
+    Eingeloggt als: {{user?.name}}
+    (Rolle: {{user?.role | uppercase}})
+  </span>
+  <button (click)="logout()">Ausloggen</button>
+</div>

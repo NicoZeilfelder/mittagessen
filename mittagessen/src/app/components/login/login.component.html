@@ -1,5 +1,5 @@
 <div class="login-wrapper">
-  <h1>Mittagessen</h1>
+  <h2>Login</h2>
   <div class="form-wrapper" [formGroup]="form">
     <div class="id-wrapper" *ngIf="loginState === LoginState.LOGIN">
       <label for="id">Kennung:</label>
@@ -22,8 +22,9 @@
     <span>Bitte füllen Sie alle Felder aus!</span>
   </div>
 
-  <div class="successful-registration" *ngIf="">
-
+  <div class="successful-registration" *ngIf="this.user?.id">
+    <span>Die Registrierung war erfolgreich!</span>
+    <span>Ihre Kennung lautet: {{this.user.id}}</span>
   </div>
 
   <div class="buttons-wrapper">
@@ -31,9 +32,9 @@
       <button type="button" (click)="this.loginState = LoginState.SIGNUP">Kennung beantragen</button>
       <button type="button" (click)="onLogin()">Anmelden</button>
     </div>
-    <div class="signup-buttons" *ngIf="loginState === LoginState.SIGNUP">
+    <div class="signup-buttons" *ngIf="loginState === LoginState.SIGNUP ">
       <button type="button" (click)="this.loginState = LoginState.LOGIN">Zurück</button>
-      <button type="button" (click)="onSignUp()">Registrieren</button>
+      <button type="button" *ngIf="!user?.id" (click)="onSignUp()">Registrieren</button>
     </div>
   </div>
 </div>

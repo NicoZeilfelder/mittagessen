@@ -1,1 +1,7 @@
-<app-login></app-login>
+<h1>Mittagessen</h1>
+
+<app-login (loginEvent)="setUser($event)" *ngIf="!this.user"></app-login>
+
+<div class="page" *ngIf="this.user">
+  <app-header [user]="this.user" (logoutEvent)="setUser($event)"></app-header>
+</div>
